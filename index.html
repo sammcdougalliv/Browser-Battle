@@ -42,12 +42,13 @@
             <button id="give-up" @click="giveUp">GIVE UP</button>
         </div>
     </section>
-    <section class="row log">
+    <section class="row log" v-if="turns.length > 0">
       <h1 v-show="winner">{{ whoWon }}</h1>
         <div class="small-12 columns">
             <ul>
-                <li>
-
+                <li v-for="turn in turns"
+                :class="{'player-turn': turn.isPlayer, 'bad-turn': !turn.isPlayer}">
+                  {{ turn.text }}
                 </li>
             </ul>
         </div>
